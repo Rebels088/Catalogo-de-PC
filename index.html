@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo de computadoras, laptops, estaciones de trabajo y dispositivos móviles.">
+    <title>TechCatalog | Catálogo de equipos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">TechCatalog</a>
+        <nav>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#informacion">Información</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="eyebrow">CATÁLOGO DE TECNOLOGÍA</p>
+            <h1>Encuentra tu próximo equipo</h1>
+            <p>
+                Explora computadoras, laptops, workstations
+                y dispositivos móviles en un solo lugar.
+            </p>
+
+            <a href="#catalogo" class="primary-button">
+                Explorar catálogo
+            </a>
+        </section>
+
+        <section id="catalogo" class="catalog-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">NUESTROS EQUIPOS</p>
+                    <h2>Catálogo de productos</h2>
+                </div>
+                <span id="result-count" aria-live="polite"></span>
+            </div>
+
+            <label for="search" class="visually-hidden">
+                Buscar equipos
+            </label>
+            <input
+                type="search"
+                id="search"
+                placeholder="Buscar por nombre, marca o categoría..."
+            >
+
+            <div class="filters" aria-label="Filtrar por categoría">
+                <button class="filter active" data-category="Todos">
+                    Todos
+                </button>
+                <button class="filter" data-category="Desktop">
+                    Desktop
+                </button>
+                <button class="filter" data-category="Laptop">
+                    Laptop
+                </button>
+                <button class="filter" data-category="Workstation">
+                    Workstation
+                </button>
+                <button class="filter" data-category="Movil">
+                    Dispositivos móviles
+                </button>
+            </div>
+
+            <div id="product-grid" class="product-grid"></div>
+            <p id="empty-message" class="empty-message" hidden>
+                No se encontraron equipos. Intenta otra búsqueda.
+            </p>
+        </section>
+
+        <section id="informacion" class="info-section">
+            <h2>Acerca del catálogo</h2>
+            <p>
+                Un espacio para consultar y comparar equipos tecnológicos.
+                Las especificaciones y los precios deben verificarse
+                con el vendedor antes de realizar una compra.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>TechCatalog. Catálogo de equipos tecnológicos.</p>
+    </footer>
+</body>
+</html>
