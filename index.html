@@ -2,90 +2,218 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Catálogo de computadoras, laptops, estaciones de trabajo y dispositivos móviles.">
-    <title>TechCatalog | Catálogo de equipos</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catálogo tecnológico de computadoras, estaciones de trabajo y dispositivos móviles.">
+  <meta name="theme-color" content="#080c16">
+  <title>TechCatalog | Catálogo tecnológico</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data/productos.js" defer></script>
+  <script src="js/catalogo.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <a href="#" class="logo">TechCatalog</a>
-        <nav>
-            <a href="#catalogo">Catálogo</a>
-            <a href="#informacion">Información</a>
-        </nav>
-    </header>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">TC</span>
+      <span>TECH<span class="accent">CATALOG</span></span>
+    </a>
 
-    <main>
-        <section class="hero">
-            <p class="eyebrow">CATÁLOGO DE TECNOLOGÍA</p>
-            <h1>Encuentra tu próximo equipo</h1>
-            <p>
-                Explora computadoras, laptops, workstations
-                y dispositivos móviles en un solo lugar.
-            </p>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a class="nav-link active" href="index.html">Catálogo</a>
+      <a class="nav-link" href="#categorias">Categorías</a>
+      <a class="nav-link" href="#acerca">Acerca de</a>
+    </nav>
 
-            <a href="#catalogo" class="primary-button">
-                Explorar catálogo
-            </a>
-        </section>
+    <a class="header-label" href="#catalogo">
+      EXPLORAR EQUIPOS <span aria-hidden="true">↗</span>
+    </a>
+  </header>
 
-        <section id="catalogo" class="catalog-section">
-            <div class="section-heading">
-                <div>
-                    <p class="eyebrow">NUESTROS EQUIPOS</p>
-                    <h2>Catálogo de productos</h2>
-                </div>
-                <span id="result-count" aria-live="polite"></span>
-            </div>
+  <main>
+    <section class="hero">
+      <div class="hero-grid"></div>
 
-            <label for="search" class="visually-hidden">
-                Buscar equipos
-            </label>
-            <input
-                type="search"
-                id="search"
-                placeholder="Buscar por nombre, marca o categoría..."
-            >
+      <div class="hero-content">
+        <p class="eyebrow">
+          <span class="status-dot"></span>
+          DIRECTORIO DE HARDWARE
+        </p>
 
-            <div class="filters" aria-label="Filtrar por categoría">
-                <button class="filter active" data-category="Todos">
-                    Todos
-                </button>
-                <button class="filter" data-category="Desktop">
-                    Desktop
-                </button>
-                <button class="filter" data-category="Laptop">
-                    Laptop
-                </button>
-                <button class="filter" data-category="Workstation">
-                    Workstation
-                </button>
-                <button class="filter" data-category="Movil">
-                    Dispositivos móviles
-                </button>
-            </div>
+        <h1>TECNOLOGÍA<br>EN <span class="accent">DETALLE.</span></h1>
 
-            <div id="product-grid" class="product-grid"></div>
-            <p id="empty-message" class="empty-message" hidden>
-                No se encontraron equipos. Intenta otra búsqueda.
-            </p>
-        </section>
+        <p class="hero-copy">
+          Explora equipos, compara especificaciones y descubre la
+          tecnología que se adapta a cada necesidad.
+        </p>
 
-        <section id="informacion" class="info-section">
-            <h2>Acerca del catálogo</h2>
-            <p>
-                Un espacio para consultar y comparar equipos tecnológicos.
-                Las especificaciones y los precios deben verificarse
-                con el vendedor antes de realizar una compra.
-            </p>
-        </section>
-    </main>
+        <a class="button button-primary" href="#catalogo">
+          VER CATÁLOGO <span aria-hidden="true">↘</span>
+        </a>
 
-    <footer class="footer">
-        <p>TechCatalog. Catálogo de equipos tecnológicos.</p>
-    </footer>
+        <div class="hero-stats">
+          <div>
+            <strong id="hero-total">00</strong>
+            <span>EQUIPOS</span>
+          </div>
+          <div>
+            <strong>04</strong>
+            <span>CATEGORÍAS</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span>INFORMATIVO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-ring ring-one"></div>
+        <div class="visual-ring ring-two"></div>
+
+        <div class="visual-tag tag-top">HARDWARE / 2026</div>
+
+        <img
+          src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=1000&q=85"
+          alt="Computadora de escritorio de alto rendimiento"
+          fetchpriority="high"
+        >
+
+        <div class="visual-tag tag-bottom">
+          <span class="status-dot"></span>
+          EXPLORA EL HARDWARE
+        </div>
+      </div>
+
+      <div class="hero-index">01 <span>/</span> 04</div>
+    </section>
+
+    <section class="category-section section-wrap" id="categorias">
+      <div class="section-kicker">01 / EXPLORAR POR TIPO</div>
+
+      <div class="category-grid">
+        <button class="category-tile" data-shortcut="Desktop">
+          <span class="category-number">01</span>
+          <span class="category-name">Desktop</span>
+          <span class="category-desc">Sistemas de escritorio</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile" data-shortcut="Laptop">
+          <span class="category-number">02</span>
+          <span class="category-name">Laptop</span>
+          <span class="category-desc">Potencia portátil</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile" data-shortcut="Workstation">
+          <span class="category-number">03</span>
+          <span class="category-name">Workstation</span>
+          <span class="category-desc">Trabajo profesional</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile" data-shortcut="Movil">
+          <span class="category-number">04</span>
+          <span class="category-name">Móvil</span>
+          <span class="category-desc">Teléfonos y tabletas</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="catalog-section section-wrap" id="catalogo">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">02 / BIBLIOTECA DE EQUIPOS</div>
+          <h2>Catálogo <span class="accent">destacado</span></h2>
+          <p class="section-description">
+            Consulta modelos y sus especificaciones técnicas.
+          </p>
+        </div>
+
+        <div class="catalog-count">
+          <span id="result-count">00</span>
+          <span>MODELOS</span>
+        </div>
+      </div>
+
+      <div class="catalog-toolbar">
+        <label class="search-box">
+          <span class="search-symbol" aria-hidden="true">⌕</span>
+          <span class="visually-hidden">Buscar equipos</span>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Buscar por nombre, marca o especificación..."
+            autocomplete="off"
+          >
+        </label>
+
+        <label class="sort-control">
+          <span>ORDENAR</span>
+          <select id="sort-select" aria-label="Ordenar equipos">
+            <option value="featured">Destacados</option>
+            <option value="name-asc">Nombre: A–Z</option>
+            <option value="name-desc">Nombre: Z–A</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="filter-row" role="group" aria-label="Filtrar por categoría">
+        <button class="filter-button is-active" data-category="Todos" aria-pressed="true">Todos</button>
+        <button class="filter-button" data-category="Desktop" aria-pressed="false">Desktop</button>
+        <button class="filter-button" data-category="Laptop" aria-pressed="false">Laptop</button>
+        <button class="filter-button" data-category="Workstation" aria-pressed="false">Workstation</button>
+        <button class="filter-button" data-category="Movil" aria-pressed="false">Dispositivos móviles</button>
+      </div>
+
+      <div id="product-grid" class="product-grid"></div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <h3>No se encontraron equipos</h3>
+        <p>Prueba otra búsqueda o selecciona una categoría diferente.</p>
+        <button class="button button-outline" id="clear-filters">
+          LIMPIAR FILTROS
+        </button>
+      </div>
+
+      <p class="catalog-note">
+        Catálogo informativo. Las especificaciones de ejemplo deben
+        confirmarse con el fabricante.
+      </p>
+    </section>
+
+    <section class="about-section" id="acerca">
+      <div class="about-inner section-wrap">
+        <div>
+          <div class="section-kicker">03 / SOBRE EL PROYECTO</div>
+          <h2>Hardware para cada<br><span class="accent">forma de crear.</span></h2>
+        </div>
+
+        <div class="about-copy">
+          <p>
+            TechCatalog es un directorio visual para explorar distintas
+            clases de equipos tecnológicos en un solo lugar. Su propósito
+            es presentar información técnica de manera clara y organizada.
+          </p>
+          <p>
+            No procesamos compras ni pagos. Utiliza las fichas como punto
+            de partida para investigar cada modelo.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">TC</span>
+      <span>TECH<span class="accent">CATALOG</span></span>
+    </a>
+
+    <p>CATÁLOGO TECNOLÓGICO INDEPENDIENTE</p>
+
+    <a href="#categorias" class="back-top">VOLVER ARRIBA ↑</a>
+  </footer>
 </body>
 </html>
