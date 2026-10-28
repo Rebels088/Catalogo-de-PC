@@ -1,157 +1,167 @@
 
-/*
-  CATÁLOGO DE PRODUCTOS
-  Edita este archivo para añadir o modificar equipos.
-
-  Categorías permitidas:
-  Desktop, Laptop, Workstation, Movil.
-
-  Los datos son ejemplos ilustrativos y deben verificarse.
-*/
-
-window.PRODUCTS = [
-  {
-    id: "desktop-001",
-    name: "Apex Forge X7",
-    brand: "Apex",
-    model: "Forge X7",
-    category: "Desktop",
-    featured: true,
-    image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=1000&q=85",
-    imageAlt: "Computadora de escritorio de alto rendimiento",
-    summary: "Sistema de escritorio para videojuegos y tareas exigentes.",
-    specs: {
-      "Procesador": "AMD Ryzen 7 (ejemplo)",
-      "Memoria RAM": "32 GB DDR5 (ejemplo)",
-      "Gráficos": "GPU dedicada",
-      "Almacenamiento": "1 TB SSD (ejemplo)",
-      "Sistema operativo": "Windows o Linux"
+const products = [
+    {
+        id: 1,
+        name: "Dell OptiPlex Desktop",
+        brand: "Dell",
+        category: "Desktop",
+        description: "Computadora de escritorio para oficina y productividad.",
+        specs: "Intel Core i5 · 16 GB RAM · 512 GB SSD",
+        price: 699,
+        image: "https://placehold.co/600x400/f1f5f9/1e293b?text=Dell+OptiPlex"
+    },
+    {
+        id: 2,
+        name: "HP Pavilion Laptop",
+        brand: "HP",
+        category: "Laptop",
+        description: "Laptop para estudiar, trabajar y uso diario.",
+        specs: "Intel Core i5 · 16 GB RAM · 512 GB SSD",
+        price: 799,
+        image: "https://placehold.co/600x400/f1f5f9/1e293b?text=HP+Pavilion"
+    },
+    {
+        id: 3,
+        name: "Lenovo ThinkStation",
+        brand: "Lenovo",
+        category: "Workstation",
+        description: "Estación de trabajo para aplicaciones profesionales.",
+        specs: "Intel Xeon · 32 GB RAM · 1 TB SSD",
+        price: 1899,
+        image: "https://placehold.co/600x400/f1f5f9/1e293b?text=ThinkStation"
+    },
+    {
+        id: 4,
+        name: "Apple MacBook Air",
+        brand: "Apple",
+        category: "Laptop",
+        description: "Laptop portátil para productividad y creación de contenido.",
+        specs: "Apple Silicon · 16 GB RAM · 512 GB SSD",
+        price: 1099,
+        image: "https://placehold.co/600x400/f1f5f9/1e293b?text=MacBook+Air"
+    },
+    {
+        id: 5,
+        name: "Samsung Galaxy Smartphone",
+        brand: "Samsung",
+        category: "Movil",
+        description: "Teléfono inteligente para comunicación y aplicaciones.",
+        specs: "256 GB de almacenamiento · Pantalla táctil",
+        price: 799,
+        image: "https://placehold.co/600x400/f1f5f9/1e293b?text=Galaxy"
+    },
+    {
+        id: 6,
+        name: "Apple iPad",
+        brand: "Apple",
+        category: "Movil",
+        description: "Tableta para lectura, estudio y entretenimiento.",
+        specs: "128 GB de almacenamiento · Pantalla táctil",
+        price: 449,
+        image: "https://placehold.co/600x400/f1f5f9/1e293b?text=iPad"
     }
-  },
-  {
-    id: "laptop-001",
-    name: "Vector 16 Pro",
-    brand: "Vector",
-    model: "16 Pro",
-    category: "Laptop",
-    featured: true,
-    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=1000&q=85",
-    imageAlt: "Computadora portátil abierta",
-    summary: "Laptop para videojuegos, creación de contenido y productividad.",
-    specs: {
-      "Procesador": "Intel Core i7 (ejemplo)",
-      "Memoria RAM": "16 GB (ejemplo)",
-      "Gráficos": "GPU dedicada",
-      "Almacenamiento": "1 TB SSD (ejemplo)",
-      "Pantalla": "16 pulgadas (ejemplo)"
-    }
-  },
-  {
-    id: "workstation-001",
-    name: "Vertex Studio W5",
-    brand: "Vertex",
-    model: "Studio W5",
-    category: "Workstation",
-    featured: true,
-    image: "https://images.unsplash.com/photo-1591238372338-22d30c883a86?auto=format&fit=crop&w=1000&q=85",
-    imageAlt: "Estación de trabajo de escritorio",
-    summary: "Estación de trabajo para ingeniería, modelado y producción.",
-    specs: {
-      "Procesador": "CPU profesional multinúcleo",
-      "Memoria RAM": "64 GB (ejemplo)",
-      "Gráficos": "GPU profesional o dedicada",
-      "Almacenamiento": "2 TB SSD (ejemplo)",
-      "Uso recomendado": "CAD, renderizado y producción"
-    }
-  },
-  {
-    id: "mobile-001",
-    name: "Nova One Ultra",
-    brand: "Nova",
-    model: "One Ultra",
-    category: "Movil",
-    featured: true,
-    image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=1000&q=85",
-    imageAlt: "Teléfono inteligente moderno",
-    summary: "Teléfono inteligente para fotografía, comunicación y aplicaciones.",
-    specs: {
-      "Pantalla": "OLED (ejemplo)",
-      "Memoria RAM": "12 GB (ejemplo)",
-      "Almacenamiento": "256 GB (ejemplo)",
-      "Conectividad": "Wi-Fi y red móvil",
-      "Sistema operativo": "Android, según versión"
-    }
-  },
-  {
-    id: "desktop-002",
-    name: "Northstar Compact",
-    brand: "Northstar",
-    model: "Compact",
-    category: "Desktop",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1000&q=85",
-    imageAlt: "Computadora de escritorio con periféricos",
-    summary: "Equipo compacto para productividad, oficina y estudio.",
-    specs: {
-      "Procesador": "Intel Core i5 (ejemplo)",
-      "Memoria RAM": "16 GB (ejemplo)",
-      "Gráficos": "Integrados o dedicados",
-      "Almacenamiento": "512 GB SSD (ejemplo)",
-      "Uso recomendado": "Oficina y estudio"
-    }
-  },
-  {
-    id: "laptop-002",
-    name: "Slate Air 14",
-    brand: "Slate",
-    model: "Air 14",
-    category: "Laptop",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=85",
-    imageAlt: "Laptop delgada sobre un escritorio",
-    summary: "Laptop ligera para movilidad, estudio y productividad.",
-    specs: {
-      "Procesador": "CPU de bajo consumo",
-      "Memoria RAM": "16 GB (ejemplo)",
-      "Gráficos": "Integrados",
-      "Almacenamiento": "512 GB SSD (ejemplo)",
-      "Pantalla": "14 pulgadas (ejemplo)"
-    }
-  },
-  {
-    id: "workstation-002",
-    name: "Titan Render S2",
-    brand: "Titan",
-    model: "Render S2",
-    category: "Workstation",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=85",
-    imageAlt: "Torre de computadora para trabajo especializado",
-    summary: "Plataforma configurable para cargas de trabajo intensivas.",
-    specs: {
-      "Procesador": "CPU de alto rendimiento",
-      "Memoria RAM": "64 GB o más, según configuración",
-      "Gráficos": "GPU dedicada",
-      "Almacenamiento": "SSD NVMe",
-      "Uso recomendado": "Renderizado y cálculo"
-    }
-  },
-  {
-    id: "mobile-002",
-    name: "Tab Horizon 11",
-    brand: "Horizon",
-    model: "Tab 11",
-    category: "Movil",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1000&q=85",
-    imageAlt: "Tableta con pantalla táctil",
-    summary: "Tableta para lectura, dibujo, estudio y entretenimiento.",
-    specs: {
-      "Pantalla": "11 pulgadas (ejemplo)",
-      "Memoria RAM": "8 GB (ejemplo)",
-      "Almacenamiento": "128 GB (ejemplo)",
-      "Conectividad": "Wi-Fi o móvil",
-      "Accesorios": "Compatibilidad variable con lápiz y teclado"
-    }
-  }
 ];
+
+const productGrid = document.getElementById("product-grid");
+const searchInput = document.getElementById("search");
+const resultCount = document.getElementById("result-count");
+const emptyMessage = document.getElementById("empty-message");
+const filterButtons = document.querySelectorAll(".filter");
+
+let activeCategory = "Todos";
+
+function renderProducts() {
+    const searchTerm = searchInput.value
+        .trim()
+        .toLowerCase();
+
+    const filteredProducts = products.filter(product => {
+        const matchesCategory =
+            activeCategory === "Todos" ||
+            product.category === activeCategory;
+
+        const searchableText = [
+            product.name,
+            product.brand,
+            product.category,
+            product.description,
+            product.specs
+        ].join(" ").toLowerCase();
+
+        const matchesSearch = searchableText.includes(searchTerm);
+
+        return matchesCategory && matchesSearch;
+    });
+
+    productGrid.replaceChildren();
+
+    filteredProducts.forEach(product => {
+        const card = document.createElement("article");
+        card.className = "product-card";
+
+        const image = document.createElement("img");
+        image.className = "product-image";
+        image.src = product.image;
+        image.alt = product.name;
+        image.loading = "lazy";
+
+        const content = document.createElement("div");
+        content.className = "product-content";
+
+        const category = document.createElement("p");
+        category.className = "product-category";
+        category.textContent = product.category === "Movil"
+            ? "Dispositivo móvil"
+            : product.category;
+
+        const name = document.createElement("h3");
+        name.textContent = product.name;
+
+        const description = document.createElement("p");
+        description.className = "product-description";
+        description.textContent = product.description;
+
+        const specs = document.createElement("p");
+        specs.className = "product-specs";
+        specs.textContent = product.specs;
+
+        const price = document.createElement("p");
+        price.className = "product-price";
+        price.textContent = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(product.price);
+
+        content.append(category, name, description, specs, price);
+        card.append(image, content);
+        productGrid.append(card);
+    });
+
+    resultCount.textContent =
+        `${filteredProducts.length} equipos encontrados`;
+
+    emptyMessage.hidden = filteredProducts.length !== 0;
+}
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        activeCategory = button.dataset.category;
+
+        filterButtons.forEach(item => {
+            const isActive = item === button;
+            item.classList.toggle("active", isActive);
+            item.setAttribute("aria-pressed", String(isActive));
+        });
+
+        renderProducts();
+    });
+
+    button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.category === activeCategory)
+    );
+});
+
+searchInput.addEventListener("input", renderProducts);
+
+renderProducts();
