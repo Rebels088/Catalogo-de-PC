@@ -1,11 +1,9 @@
-
 techcatalog-gaming/
 ├── index.html
 ├── producto.html
 ├── styles.css
 ├── data/
 │   └── productos.js
-├── js/
-│   ├── catalogo.js
-│   └── detalle.js
-└── assets/
+└── js/
+    ├── catalogo.js
+    └── detalle.js
