@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Ficha técnica de un equipo en TechCatalog."
+  >
+
+  <meta name="theme-color" content="#080c16">
+
+  <title>Ficha de equipo | TechCatalog</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="data/productos.js" defer></script>
+  <script src="js/detalle.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">TC</span>
+      <span>TECH<span class="accent">CATALOG</span></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a class="nav-link" href="index.html">Catálogo</a>
+      <a class="nav-link" href="index.html#categorias">Categorías</a>
+      <a class="nav-link" href="index.html#acerca">Acerca de</a>
+    </nav>
+
+    <a class="header-label" href="index.html#catalogo">
+      VOLVER AL CATÁLOGO
+      <span aria-hidden="true">↗</span>
+    </a>
+  </header>
+
+  <main class="detail-main section-wrap">
+    <a class="back-link" href="index.html#catalogo">
+      ← Volver al catálogo
+    </a>
+
+    <div id="detail-root" class="detail-root" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">TC</span>
+      <span>TECH<span class="accent">CATALOG</span></span>
+    </a>
+
+    <p>CATÁLOGO TECNOLÓGICO INDEPENDIENTE</p>
+
+    <a href="index.html#catalogo" class="back-top">
+      VER TODOS LOS EQUIPOS
+    </a>
+  </footer>
+</body>
+</html>
