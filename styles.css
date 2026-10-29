@@ -942,3 +942,180 @@ select:focus-visible {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Página de detalles del equipo */
+
+.detail-main {
+  padding-top: 34px;
+  padding-bottom: 90px;
+  min-height: 65vh;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.back-link:hover {
+  color: var(--blue);
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 55px;
+  align-items: start;
+}
+
+.detail-visual {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 18px;
+}
+
+.detail-visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 0.85;
+  object-fit: cover;
+}
+
+.detail-image-label {
+  display: block;
+  padding-top: 14px;
+  color: var(--blue);
+  font-size: 0.59rem;
+  letter-spacing: 0.1em;
+}
+
+.detail-info .section-kicker {
+  margin: 0 0 18px;
+}
+
+.detail-brand {
+  color: var(--blue);
+  font-size: 0.76rem;
+  margin: 0 0 7px;
+}
+
+.detail-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 0.98;
+  margin: 0 0 20px;
+}
+
+.detail-summary {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.detail-disclaimer {
+  padding: 12px 14px;
+  border-left: 2px solid var(--blue);
+  background: rgba(101, 169, 255, 0.07);
+  color: #a9bad0;
+  font-size: 0.72rem;
+  margin: 22px 0 26px;
+}
+
+.spec-heading {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+}
+
+.detail-specs {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.7fr) 1.3fr;
+  margin: 0;
+}
+
+.detail-specs dt,
+.detail-specs dd {
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.76rem;
+}
+
+.detail-specs dt {
+  color: var(--muted);
+}
+
+.detail-specs dd {
+  color: var(--text);
+  text-align: right;
+}
+
+.detail-actions {
+  margin-top: 25px;
+}
+
+.detail-not-found {
+  font-family: var(--font-display);
+  font-size: 3rem;
+}
+
+.detail-not-found-copy {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* Equipos relacionados */
+
+.related-section {
+  margin-top: 70px;
+  border-top: 1px solid var(--line);
+  padding-top: 25px;
+}
+
+.related-section h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+}
+
+.related-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.related-link {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 0.8rem;
+}
+
+.related-link:hover {
+  border-color: var(--blue);
+}
+
+/* Adaptación de las fichas para dispositivos móviles */
+
+@media (max-width: 1000px) {
+  .detail-layout {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 650px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-title {
+    font-size: 3.7rem;
+  }
+
+  .related-list {
+    grid-template-columns: 1fr;
+  }
+}
