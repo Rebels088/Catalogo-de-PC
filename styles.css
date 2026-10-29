@@ -1675,3 +1675,13 @@ footer a,
     scroll-behavior: auto !important;
   }
 }
+
+.brand,
+.hero h1,
+.section-heading h2,
+.category-name,
+.product-title,
+.detail-info h1,
+.detail-info h2 {
+  font-family: "Orbitron", "Segoe UI", sans-serif;
+}
