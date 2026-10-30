@@ -2,20 +2,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Catálogo tecnológico de computadoras, estaciones de trabajo y dispositivos móviles.">
+  <meta name="description" content="Catálogo tecnológico de computadoras, estaciones de trabajo y dispositivos móviles en Estados Unidos y Puerto Rico.">
   <meta name="theme-color" content="#080c16">
+
   <title>TechCatalog | Catálogo tecnológico</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
-  <script src="data/productos.js" defer></script>
-  <script src="js/catalogo.js" defer></script>
+
+  <!-- Supabase y configuración -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="js/supabase-config.js" defer></script>
+  <script src="js/catalogo-supabase.js" defer></script>
 </head>
+
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
@@ -24,7 +29,7 @@
     </a>
 
     <nav class="main-nav" aria-label="Navegación principal">
-      <a class="nav-link active" href="index.html">Catálogo</a>
+      <a class="nav-link active" href="#catalogo">Catálogo</a>
       <a class="nav-link" href="#categorias">Categorías</a>
       <a class="nav-link" href="#acerca">Acerca de</a>
     </nav>
@@ -69,6 +74,10 @@
             <span>INFORMATIVO</span>
           </div>
         </div>
+
+        <p id="connection-status" role="status" aria-live="polite">
+          Conectando con la base de datos...
+        </p>
       </div>
 
       <div class="hero-visual">
@@ -96,28 +105,28 @@
       <div class="section-kicker">01 / EXPLORAR POR TIPO</div>
 
       <div class="category-grid">
-        <button class="category-tile" data-shortcut="Desktop">
+        <button class="category-tile" type="button" data-shortcut="Desktop">
           <span class="category-number">01</span>
           <span class="category-name">Desktop</span>
           <span class="category-desc">Sistemas de escritorio</span>
           <span class="tile-arrow" aria-hidden="true">↗</span>
         </button>
 
-        <button class="category-tile" data-shortcut="Laptop">
+        <button class="category-tile" type="button" data-shortcut="Laptop">
           <span class="category-number">02</span>
           <span class="category-name">Laptop</span>
           <span class="category-desc">Potencia portátil</span>
           <span class="tile-arrow" aria-hidden="true">↗</span>
         </button>
 
-        <button class="category-tile" data-shortcut="Workstation">
+        <button class="category-tile" type="button" data-shortcut="Workstation">
           <span class="category-number">03</span>
           <span class="category-name">Workstation</span>
           <span class="category-desc">Trabajo profesional</span>
           <span class="tile-arrow" aria-hidden="true">↗</span>
         </button>
 
-        <button class="category-tile" data-shortcut="Movil">
+        <button class="category-tile" type="button" data-shortcut="Movil">
           <span class="category-number">04</span>
           <span class="category-name">Móvil</span>
           <span class="category-desc">Teléfonos y tabletas</span>
@@ -132,12 +141,12 @@
           <div class="section-kicker">02 / BIBLIOTECA DE EQUIPOS</div>
           <h2>Catálogo <span class="accent">destacado</span></h2>
           <p class="section-description">
-            Consulta modelos y sus especificaciones técnicas.
+            Consulta modelos, especificaciones técnicas y precios por región.
           </p>
         </div>
 
         <div class="catalog-count">
-          <span id="result-count">00</span>
+          <span id="result-count">00 modelos</span>
           <span>MODELOS</span>
         </div>
       </div>
@@ -162,29 +171,43 @@
             <option value="name-desc">Nombre: Z–A</option>
           </select>
         </label>
+
+        <label class="sort-control">
+          <span>REGIÓN</span>
+          <select id="region-filter" aria-label="Filtrar por región">
+            <option value="">Todas las regiones</option>
+            <option value="US">Estados Unidos</option>
+            <option value="PR">Puerto Rico</option>
+            <option value="GLOBAL">Internacional</option>
+          </select>
+        </label>
       </div>
 
       <div class="filter-row" role="group" aria-label="Filtrar por categoría">
-        <button class="filter-button is-active" data-category="Todos" aria-pressed="true">Todos</button>
-        <button class="filter-button" data-category="Desktop" aria-pressed="false">Desktop</button>
-        <button class="filter-button" data-category="Laptop" aria-pressed="false">Laptop</button>
-        <button class="filter-button" data-category="Workstation" aria-pressed="false">Workstation</button>
-        <button class="filter-button" data-category="Movil" aria-pressed="false">Dispositivos móviles</button>
+        <button class="filter-button is-active" type="button" data-category="Todos" aria-pressed="true">Todos</button>
+        <button class="filter-button" type="button" data-category="Desktop" aria-pressed="false">Desktop</button>
+        <button class="filter-button" type="button" data-category="Laptop" aria-pressed="false">Laptop</button>
+        <button class="filter-button" type="button" data-category="Workstation" aria-pressed="false">Workstation</button>
+        <button class="filter-button" type="button" data-category="Movil" aria-pressed="false">Dispositivos móviles</button>
       </div>
 
-      <div id="product-grid" class="product-grid"></div>
+      <div id="product-grid" class="product-grid" aria-live="polite">
+        <div class="empty-state">
+          <p>Conectando con el catálogo de productos...</p>
+        </div>
+      </div>
 
       <div id="empty-state" class="empty-state" hidden>
         <h3>No se encontraron equipos</h3>
-        <p>Prueba otra búsqueda o selecciona una categoría diferente.</p>
-        <button class="button button-outline" id="clear-filters">
+        <p>Prueba otra búsqueda, región o categoría.</p>
+        <button class="button button-outline" id="clear-filters" type="button">
           LIMPIAR FILTROS
         </button>
       </div>
 
       <p class="catalog-note">
-        Catálogo informativo. Las especificaciones de ejemplo deben
-        confirmarse con el fabricante.
+        Catálogo informativo. Confirma las especificaciones, los precios
+        y la disponibilidad con el fabricante o vendedor.
       </p>
     </section>
 
@@ -202,8 +225,11 @@
             es presentar información técnica de manera clara y organizada.
           </p>
           <p>
-            No procesamos compras ni pagos. Utiliza las fichas como punto
-            de partida para investigar cada modelo.
+            Consulta los precios regionales y visita los enlaces de los
+            vendedores para confirmar los detalles antes de comprar.
+          </p>
+          <p>
+            No procesamos compras ni pagos.
           </p>
         </div>
       </div>
