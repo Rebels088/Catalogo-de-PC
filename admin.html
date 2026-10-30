@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080c16">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Administración | TechCatalog</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="js/supabase-config.js" defer></script>
+  <script src="js/admin.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">TC</span>
+      <span>TECH<span class="accent">CATALOG</span></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a class="nav-link" href="index.html">Ver catálogo</a>
+      <a class="nav-link active" href="admin.html">Administración</a>
+    </nav>
+  </header>
+
+  <main class="section-wrap">
+    <section class="catalog-section">
+      <div class="section-kicker">PANEL PRIVADO / TECHCATALOG</div>
+      <h1>Administración <span class="accent">del catálogo.</span></h1>
+      <p class="section-description">
+        Inicia sesión para gestionar productos y su publicación.
+      </p>
+
+      <p id="admin-status" role="status" aria-live="polite">
+        Comprobando la conexión...
+      </p>
+
+      <section id="login-panel">
+        <h2>Iniciar sesión</h2>
+
+        <form id="login-form">
+          <p>
+            <label for="admin-email">Correo electrónico</label><br>
+            <input id="admin-email" name="email" type="email"
+              autocomplete="username" required>
+          </p>
+
+          <p>
+            <label for="admin-password">Contraseña</label><br>
+            <input id="admin-password" name="password" type="password"
+              autocomplete="current-password" required>
+          </p>
+
+          <button class="button button-primary" type="submit">
+            INICIAR SESIÓN
+          </button>
+        </form>
+      </section>
+
+      <section id="admin-panel" hidden>
+        <div class="section-heading">
+          <h2>Gestionar productos</h2>
+          <button class="button button-outline" id="logout-button" type="button">
+            CERRAR SESIÓN
+          </button>
+        </div>
+
+        <form id="product-form">
+          <input id="product-id" type="hidden">
+
+          <p>
+            <label for="product-brand">Marca *</label><br>
+            <input id="product-brand" required maxlength="100">
+          </p>
+
+          <p>
+            <label for="product-model">Modelo *</label><br>
+            <input id="product-model" required maxlength="150">
+          </p>
+
+          <p>
+            <label for="product-name">Nombre del producto *</label><br>
+            <input id="product-name" required maxlength="200">
+          </p>
+
+          <p>
+            <label for="product-category">Categoría *</label><br>
+            <select id="product-category" required>
+              <option value="Desktop">Desktop</option>
+              <option value="Laptop">Laptop</option>
+              <option value="Workstation">Workstation</option>
+              <option value="Movil">Móvil</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="product-region">Región del producto *</label><br>
+            <select id="product-region" required>
+              <option value="US">Estados Unidos</option>
+              <option value="PR">Puerto Rico</option>
+              <option value="GLOBAL">Internacional</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="product-description">Descripción</label><br>
+            <textarea id="product-description" rows="4" maxlength="3000"></textarea>
+          </p>
+
+          <p>
+            <label for="product-image">URL de la imagen</label><br>
+            <input id="product-image" type="url" placeholder="https://...">
+          </p>
+
+          <p>
+            <label for="product-url">URL oficial del fabricante</label><br>
+            <input id="product-url" type="url" placeholder="https://...">
+          </p>
+
+          <p>
+            <label for="product-specs">Especificaciones en formato JSON</label><br>
+            <textarea id="product-specs" rows="6"
+              placeholder='{"Procesador":"Intel Core i7","Memoria":"16 GB","Almacenamiento":"1 TB SSD"}'></textarea>
+          </p>
+
+          <p>
+            <label for="product-status">Estado de publicación</label><br>
+            <select id="product-status" required>
+              <option value="draft">Borrador</option>
+              <option value="published">Publicado</option>
+              <option value="archived">Archivado</option>
+            </select>
+          </p>
+
+          <button class="button button-primary" type="submit">
+            GUARDAR PRODUCTO
+          </button>
+
+          <button class="button button-outline" id="reset-form" type="button">
+            LIMPIAR FORMULARIO
+          </button>
+        </form>
+
+        <hr>
+
+        <h2>Productos existentes</h2>
+        <p class="section-description">
+          Edita un producto para cambiar sus datos o su estado de publicación.
+        </p>
+
+        <div id="admin-products" aria-live="polite">
+          Cargando productos...
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">TC</span>
+      <span>TECH<span class="accent">CATALOG</span></span>
+    </a>
+    <p>PANEL DE ADMINISTRACIÓN</p>
+  </footer>
+</body>
+</html>
