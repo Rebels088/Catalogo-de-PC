@@ -16,100 +16,209 @@
   <script src="data/productos.js" defer></script>
   <script src="js/catalogo.js" defer></script>
 </head>
-
 <body>
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="site-logo" href="./" aria-label="TechCatalog Gaming, inicio">
-        TechCatalog <span>Gaming</span>
-      </a>
+    <a class="brand" href="index.html">
+      <span class="brand-mark">TC</span>
+      <span>TECH<span class="accent">CATALOG</span></span>
+    </a>
 
-      <nav aria-label="Navegación principal">
-        <a href="#catalogo">Catálogo</a>
-        <a href="#acerca">Acerca de</a>
-      </nav>
-    </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a class="nav-link active" href="index.html">Catálogo</a>
+      <a class="nav-link" href="#categorias">Categorías</a>
+      <a class="nav-link" href="#acerca">Acerca de</a>
+    </nav>
+
+    <a class="header-label" href="#catalogo">
+      EXPLORAR EQUIPOS <span aria-hidden="true">↗</span>
+    </a>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-content">
-        <span class="eyebrow">Base de datos de hardware / EE. UU. + Puerto Rico</span>
+      <div class="hero-grid"></div>
 
-        <h1>Encuentra tu próxima <span>máquina.</span></h1>
-
-        <p>
-          Explora computadoras de escritorio, laptops para gaming,
-          estaciones de trabajo y dispositivos móviles en un solo lugar.
+      <div class="hero-content">
+        <p class="eyebrow">
+          <span class="status-dot"></span>
+          DIRECTORIO DE HARDWARE
         </p>
 
-        <div id="connection-status" role="status" aria-live="polite">
-          Conectando con la base de datos...
+        <h1>TECNOLOGÍA<br>EN <span class="accent">DETALLE.</span></h1>
+
+        <p class="hero-copy">
+          Explora equipos, compara especificaciones y descubre la
+          tecnología que se adapta a cada necesidad.
+        </p>
+
+        <a class="button button-primary" href="#catalogo">
+          VER CATÁLOGO <span aria-hidden="true">↘</span>
+        </a>
+
+        <div class="hero-stats">
+          <div>
+            <strong id="hero-total">00</strong>
+            <span>EQUIPOS</span>
+          </div>
+          <div>
+            <strong>04</strong>
+            <span>CATEGORÍAS</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span>INFORMATIVO</span>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="container section" id="catalogo">
-      <div class="catalog-toolbar">
-        <input
-          id="search-input"
-          type="search"
-          placeholder="Buscar marca, modelo o producto..."
-          aria-label="Buscar productos"
-          autocomplete="off"
+      <div class="hero-visual">
+        <div class="visual-ring ring-one"></div>
+        <div class="visual-ring ring-two"></div>
+
+        <div class="visual-tag tag-top">HARDWARE / 2026</div>
+
+        <img
+          src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=1000&q=85"
+          alt="Computadora de escritorio de alto rendimiento"
+          fetchpriority="high"
         >
 
-        <select id="category-filter" aria-label="Filtrar por categoría">
-          <option value="">Todas las categorías</option>
-          <option value="Desktop">Computadoras de escritorio</option>
-          <option value="Laptop">Laptops</option>
-          <option value="Workstation">Estaciones de trabajo</option>
-          <option value="Movil">Móviles</option>
-        </select>
-
-        <select id="region-filter" aria-label="Filtrar por región">
-          <option value="">Todas las regiones</option>
-          <option value="US">Estados Unidos</option>
-          <option value="PR">Puerto Rico</option>
-          <option value="GLOBAL">Internacional</option>
-        </select>
-      </div>
-
-      <div class="section-heading">
-        <h2>Catálogo de productos</h2>
-        <p id="result-count" aria-live="polite">Cargando...</p>
-      </div>
-
-      <div id="product-grid" class="product-grid" aria-live="polite">
-        <div class="loading-state">
-          <p>Conectando con el catálogo de productos...</p>
+        <div class="visual-tag tag-bottom">
+          <span class="status-dot"></span>
+          EXPLORA EL HARDWARE
         </div>
+      </div>
+
+      <div class="hero-index">01 <span>/</span> 04</div>
+    </section>
+
+    <section class="category-section section-wrap" id="categorias">
+      <div class="section-kicker">01 / EXPLORAR POR TIPO</div>
+
+      <div class="category-grid">
+        <button class="category-tile" data-shortcut="Desktop">
+          <span class="category-number">01</span>
+          <span class="category-name">Desktop</span>
+          <span class="category-desc">Sistemas de escritorio</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile" data-shortcut="Laptop">
+          <span class="category-number">02</span>
+          <span class="category-name">Laptop</span>
+          <span class="category-desc">Potencia portátil</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile" data-shortcut="Workstation">
+          <span class="category-number">03</span>
+          <span class="category-name">Workstation</span>
+          <span class="category-desc">Trabajo profesional</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile" data-shortcut="Movil">
+          <span class="category-number">04</span>
+          <span class="category-name">Móvil</span>
+          <span class="category-desc">Teléfonos y tabletas</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
       </div>
     </section>
 
-    <section class="container section" id="acerca">
+    <section class="catalog-section section-wrap" id="catalogo">
       <div class="section-heading">
-        <h2>Sobre TechCatalog Gaming</h2>
+        <div>
+          <div class="section-kicker">02 / BIBLIOTECA DE EQUIPOS</div>
+          <h2>Catálogo <span class="accent">destacado</span></h2>
+          <p class="section-description">
+            Consulta modelos y sus especificaciones técnicas.
+          </p>
+        </div>
+
+        <div class="catalog-count">
+          <span id="result-count">00</span>
+          <span>MODELOS</span>
+        </div>
       </div>
-      <p class="muted">
-        Compara hardware y consulta los enlaces de los vendedores.
-        Los precios y la disponibilidad pueden cambiar; confirma los detalles
-        con el vendedor antes de comprar.
+
+      <div class="catalog-toolbar">
+        <label class="search-box">
+          <span class="search-symbol" aria-hidden="true">⌕</span>
+          <span class="visually-hidden">Buscar equipos</span>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Buscar por nombre, marca o especificación..."
+            autocomplete="off"
+          >
+        </label>
+
+        <label class="sort-control">
+          <span>ORDENAR</span>
+          <select id="sort-select" aria-label="Ordenar equipos">
+            <option value="featured">Destacados</option>
+            <option value="name-asc">Nombre: A–Z</option>
+            <option value="name-desc">Nombre: Z–A</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="filter-row" role="group" aria-label="Filtrar por categoría">
+        <button class="filter-button is-active" data-category="Todos" aria-pressed="true">Todos</button>
+        <button class="filter-button" data-category="Desktop" aria-pressed="false">Desktop</button>
+        <button class="filter-button" data-category="Laptop" aria-pressed="false">Laptop</button>
+        <button class="filter-button" data-category="Workstation" aria-pressed="false">Workstation</button>
+        <button class="filter-button" data-category="Movil" aria-pressed="false">Dispositivos móviles</button>
+      </div>
+
+      <div id="product-grid" class="product-grid"></div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <h3>No se encontraron equipos</h3>
+        <p>Prueba otra búsqueda o selecciona una categoría diferente.</p>
+        <button class="button button-outline" id="clear-filters">
+          LIMPIAR FILTROS
+        </button>
+      </div>
+
+      <p class="catalog-note">
+        Catálogo informativo. Las especificaciones de ejemplo deben
+        confirmarse con el fabricante.
       </p>
+    </section>
+
+    <section class="about-section" id="acerca">
+      <div class="about-inner section-wrap">
+        <div>
+          <div class="section-kicker">03 / SOBRE EL PROYECTO</div>
+          <h2>Hardware para cada<br><span class="accent">forma de crear.</span></h2>
+        </div>
+
+        <div class="about-copy">
+          <p>
+            TechCatalog es un directorio visual para explorar distintas
+            clases de equipos tecnológicos en un solo lugar. Su propósito
+            es presentar información técnica de manera clara y organizada.
+          </p>
+          <p>
+            No procesamos compras ni pagos. Utiliza las fichas como punto
+            de partida para investigar cada modelo.
+          </p>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>
-        TechCatalog Gaming · Verifica las especificaciones y los precios
-        con el vendedor antes de comprar.
-      </p>
-    </div>
-  </footer>
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">TC</span>
+      <span>TECH<span class="accent">CATALOG</span></span>
+    </a>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase-config.js"></script>
-  <script src="js/catalogo-supabase.js"></script>
+    <p>CATÁLOGO TECNOLÓGICO INDEPENDIENTE</p>
+
+    <a href="#categorias" class="back-top">VOLVER ARRIBA ↑</a>
+  </footer>
 </body>
 </html>
