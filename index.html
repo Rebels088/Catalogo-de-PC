@@ -1,294 +1,224 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#05080d">
-  <title>TechCatalog Gaming | Hardware Catalog</title>
-  <meta name="description" content="Explore desktops, laptops, workstations, and mobile devices with TechCatalog Gaming.">
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #05080d;
-      --panel: #0b121c;
-      --panel2: #101b28;
-      --cyan: #00e5ff;
-      --text: #eafaff;
-      --muted: #91a8b7;
-      --border: rgba(0, 229, 255, .22);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background:
-        radial-gradient(ellipse at 50% -20%, #103244 0, transparent 55%),
-        var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      min-height: 100vh;
-    }
-
-    a { color: var(--cyan); }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 20px clamp(18px, 5vw, 72px);
-      border-bottom: 1px solid var(--border);
-      background: rgba(5, 8, 13, .88);
-    }
-
-    .brand {
-      font-size: 1.05rem;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .brand span { color: var(--cyan); }
-
-    .status {
-      color: var(--muted);
-      font-size: .78rem;
-    }
-
-    .hero {
-      max-width: 1200px;
-      margin: auto;
-      padding: 72px 24px 36px;
-    }
-
-    .eyebrow {
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      font-size: .75rem;
-      font-weight: 700;
-    }
-
-    h1 {
-      font-size: clamp(2.3rem, 6vw, 4.8rem);
-      line-height: 1.02;
-      margin: 16px 0;
-      max-width: 850px;
-    }
-
-    h1 span {
-      color: var(--cyan);
-      text-shadow: 0 0 28px rgba(0, 229, 255, .22);
-    }
-
-    .intro {
-      color: var(--muted);
-      max-width: 640px;
-      line-height: 1.7;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px 24px 80px;
-    }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 12px 0 28px;
-    }
-
-    input, select {
-      background: var(--panel);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      padding: 13px 14px;
-      font-size: .95rem;
-      min-height: 46px;
-    }
-
-    input { flex: 1 1 240px; }
-    select { flex: 0 1 220px; }
-
-    input:focus, select:focus {
-      outline: 2px solid var(--cyan);
-      outline-offset: 2px;
-    }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      margin: 30px 0 18px;
-    }
-
-    h2 { font-size: 1.25rem; margin: 0; }
-    #result-count { color: var(--muted); font-size: .85rem; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-      gap: 18px;
-    }
-
-    .product {
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: linear-gradient(150deg, var(--panel2), var(--panel));
-      box-shadow: 0 8px 28px rgba(0, 0, 0, .18);
-      transition: transform .2s, border-color .2s;
-    }
-
-    .product:hover {
-      transform: translateY(-4px);
-      border-color: var(--cyan);
-    }
-
-    .product-image {
-      height: 170px;
-      display: grid;
-      place-items: center;
-      background:
-        linear-gradient(135deg, rgba(0, 229, 255, .08), transparent),
-        #081019;
-      border-bottom: 1px solid var(--border);
-      color: var(--cyan);
-      font-size: 2.5rem;
-      overflow: hidden;
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .product-body { padding: 18px; }
-
-    .category {
-      color: var(--cyan);
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 700;
-    }
-
-    .product h3 {
-      font-size: 1.1rem;
-      margin: 10px 0 8px;
-    }
-
-    .description {
-      color: var(--muted);
-      font-size: .9rem;
-      line-height: 1.55;
-      min-height: 44px;
-    }
-
-    .specs {
-      border-top: 1px solid var(--border);
-      margin-top: 14px;
-      padding-top: 12px;
-      color: #c3d6e0;
-      font-size: .82rem;
-      line-height: 1.7;
-    }
-
-    .product-link {
-      display: inline-block;
-      margin-top: 14px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .product-link:hover { text-decoration: underline; }
-
-    .message {
-      border: 1px dashed var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      color: var(--muted);
-      text-align: center;
-      line-height: 1.6;
-      grid-column: 1 / -1;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 25px 24px;
-      text-align: center;
-      color: var(--muted);
-      font-size: .8rem;
-    }
-
-    @media (max-width: 600px) {
-      .topbar { align-items: flex-start; flex-direction: column; }
-      .hero { padding-top: 48px; }
-      main { padding-inline: 16px; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catálogo tecnológico de computadoras, estaciones de trabajo y dispositivos móviles.">
+  <meta name="theme-color" content="#080c16">
+  <title>TechCatalog | Catálogo tecnológico</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data/productos.js" defer></script>
+  <script src="js/catalogo.js" defer></script>
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">TechCatalog <span>Gaming</span></div>
-    <div class="status" id="connection-status">Connecting to catalog…</div>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">TC</span>
+      <span>TECH<span class="accent">CATALOG</span></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a class="nav-link active" href="index.html">Catálogo</a>
+      <a class="nav-link" href="#categorias">Categorías</a>
+      <a class="nav-link" href="#acerca">Acerca de</a>
+    </nav>
+
+    <a class="header-label" href="#catalogo">
+      EXPLORAR EQUIPOS <span aria-hidden="true">↗</span>
+    </a>
   </header>
 
-  <section class="hero">
-    <div class="eyebrow">Hardware database / US + Puerto Rico</div>
-    <h1>Find your next <span>machine.</span></h1>
-    <p class="intro">
-      Explore desktops, gaming laptops, professional workstations,
-      and mobile devices in one place.
-    </p>
-  </section>
-
   <main>
-    <div class="filters">
-      <input
-        id="search-input"
-        type="search"
-        placeholder="Search brand, model, or product…"
-        aria-label="Search products"
-      >
-      <select id="category-filter" aria-label="Filter by category">
-        <option value="">All categories</option>
-        <option value="Desktop">Desktop</option>
-        <option value="Laptop">Laptop</option>
-        <option value="Workstation">Workstation</option>
-        <option value="Movil">Movil</option>
-      </select>
-      <select id="region-filter" aria-label="Filter by region">
-        <option value="">All regions</option>
-        <option value="US">United States</option>
-        <option value="PR">Puerto Rico</option>
-        <option value="GLOBAL">Global</option>
-      </select>
-    </div>
+    <section class="hero">
+      <div class="hero-grid"></div>
 
-    <div class="section-heading">
-      <h2>Product catalog</h2>
-      <span id="result-count">Loading…</span>
-    </div>
+      <div class="hero-content">
+        <p class="eyebrow">
+          <span class="status-dot"></span>
+          DIRECTORIO DE HARDWARE
+        </p>
 
-    <section id="product-grid" class="grid" aria-live="polite">
-      <div class="message">Connecting to the product database…</div>
+        <h1>TECNOLOGÍA<br>EN <span class="accent">DETALLE.</span></h1>
+
+        <p class="hero-copy">
+          Explora equipos, compara especificaciones y descubre la
+          tecnología que se adapta a cada necesidad.
+        </p>
+
+        <a class="button button-primary" href="#catalogo">
+          VER CATÁLOGO <span aria-hidden="true">↘</span>
+        </a>
+
+        <div class="hero-stats">
+          <div>
+            <strong id="hero-total">00</strong>
+            <span>EQUIPOS</span>
+          </div>
+          <div>
+            <strong>04</strong>
+            <span>CATEGORÍAS</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span>INFORMATIVO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-ring ring-one"></div>
+        <div class="visual-ring ring-two"></div>
+
+        <div class="visual-tag tag-top">HARDWARE / 2026</div>
+
+        <img
+          src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=1000&q=85"
+          alt="Computadora de escritorio de alto rendimiento"
+          fetchpriority="high"
+        >
+
+        <div class="visual-tag tag-bottom">
+          <span class="status-dot"></span>
+          EXPLORA EL HARDWARE
+        </div>
+      </div>
+
+      <div class="hero-index">01 <span>/</span> 04</div>
+    </section>
+
+    <section class="category-section section-wrap" id="categorias">
+      <div class="section-kicker">01 / EXPLORAR POR TIPO</div>
+
+      <div class="category-grid">
+        <button class="category-tile" data-shortcut="Desktop">
+          <span class="category-number">01</span>
+          <span class="category-name">Desktop</span>
+          <span class="category-desc">Sistemas de escritorio</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile" data-shortcut="Laptop">
+          <span class="category-number">02</span>
+          <span class="category-name">Laptop</span>
+          <span class="category-desc">Potencia portátil</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile" data-shortcut="Workstation">
+          <span class="category-number">03</span>
+          <span class="category-name">Workstation</span>
+          <span class="category-desc">Trabajo profesional</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+
+        <button class="category-tile" data-shortcut="Movil">
+          <span class="category-number">04</span>
+          <span class="category-name">Móvil</span>
+          <span class="category-desc">Teléfonos y tabletas</span>
+          <span class="tile-arrow" aria-hidden="true">↗</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="catalog-section section-wrap" id="catalogo">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">02 / BIBLIOTECA DE EQUIPOS</div>
+          <h2>Catálogo <span class="accent">destacado</span></h2>
+          <p class="section-description">
+            Consulta modelos y sus especificaciones técnicas.
+          </p>
+        </div>
+
+        <div class="catalog-count">
+          <span id="result-count">00</span>
+          <span>MODELOS</span>
+        </div>
+      </div>
+
+      <div class="catalog-toolbar">
+        <label class="search-box">
+          <span class="search-symbol" aria-hidden="true">⌕</span>
+          <span class="visually-hidden">Buscar equipos</span>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Buscar por nombre, marca o especificación..."
+            autocomplete="off"
+          >
+        </label>
+
+        <label class="sort-control">
+          <span>ORDENAR</span>
+          <select id="sort-select" aria-label="Ordenar equipos">
+            <option value="featured">Destacados</option>
+            <option value="name-asc">Nombre: A–Z</option>
+            <option value="name-desc">Nombre: Z–A</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="filter-row" role="group" aria-label="Filtrar por categoría">
+        <button class="filter-button is-active" data-category="Todos" aria-pressed="true">Todos</button>
+        <button class="filter-button" data-category="Desktop" aria-pressed="false">Desktop</button>
+        <button class="filter-button" data-category="Laptop" aria-pressed="false">Laptop</button>
+        <button class="filter-button" data-category="Workstation" aria-pressed="false">Workstation</button>
+        <button class="filter-button" data-category="Movil" aria-pressed="false">Dispositivos móviles</button>
+      </div>
+
+      <div id="product-grid" class="product-grid"></div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <h3>No se encontraron equipos</h3>
+        <p>Prueba otra búsqueda o selecciona una categoría diferente.</p>
+        <button class="button button-outline" id="clear-filters">
+          LIMPIAR FILTROS
+        </button>
+      </div>
+
+      <p class="catalog-note">
+        Catálogo informativo. Las especificaciones de ejemplo deben
+        confirmarse con el fabricante.
+      </p>
+    </section>
+
+    <section class="about-section" id="acerca">
+      <div class="about-inner section-wrap">
+        <div>
+          <div class="section-kicker">03 / SOBRE EL PROYECTO</div>
+          <h2>Hardware para cada<br><span class="accent">forma de crear.</span></h2>
+        </div>
+
+        <div class="about-copy">
+          <p>
+            TechCatalog es un directorio visual para explorar distintas
+            clases de equipos tecnológicos en un solo lugar. Su propósito
+            es presentar información técnica de manera clara y organizada.
+          </p>
+          <p>
+            No procesamos compras ni pagos. Utiliza las fichas como punto
+            de partida para investigar cada modelo.
+          </p>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    TechCatalog Gaming · Verify model specifications and prices with the seller before purchasing.
-  </footer>
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">TC</span>
+      <span>TECH<span class="accent">CATALOG</span></span>
+    </a>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase-config.js"></script>
-  <script src="js/catalogo-supabase.js"></script>
+    <p>CATÁLOGO TECNOLÓGICO INDEPENDIENTE</p>
+
+    <a href="#categorias" class="back-top">VOLVER ARRIBA ↑</a>
+  </footer>
 </body>
 </html>
